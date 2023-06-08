@@ -14,7 +14,7 @@
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-desktop"></i>
                     <span class="menu-text">
-                        Menu
+                        <strong>Management</strong>
                     </span>
 
                     <b class="arrow fa fa-angle-down"></b>
@@ -30,9 +30,15 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="{{ route('admin.categories') }}" class="">
+                        <a href="{{ route('admin.categories.manage-category') }}" class="">
                             <i class="menu-icon fa fa-caret-right"></i>
                             Categories
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ route('admin.comics.manage-comic') }}" class="">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Comics
                         </a>
                     </li>
                 </ul>
@@ -69,7 +75,10 @@
                 <div class="row">
                         @yield('users')
                         @yield('categories')
-                        @yield('profile')
+                        @yield('form')
+                        @yield('comics')
+                        @yield('chapters')
+                        @yield('contents')
                 </div><!-- /.row -->
             </div><!-- /.page-content -->
         </div>

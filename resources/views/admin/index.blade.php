@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
@@ -47,6 +47,7 @@
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+		
 	</head>
 
 	<body class="no-skin">
@@ -102,11 +103,17 @@
 		<!-- ace scripts -->
 		<script src="{{ asset('assets/js/ace-elements.min.js') }}"></script>
 		<script src="{{ asset('assets/js/ace.min.js') }}"></script>
+		{{-- ckeditor --}}
+		<script type="text/javascript" src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 
-		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+			CKEDITOR.replace("ckeditor_content");
+			CKEDITOR.config.entities = false;
+		</script>
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">	
 		jQuery(function($) {
-			$('.date-picker').datepicker({
+				$('.date-picker').datepicker({
 					autoclose: true,
 					todayHighlight: true
 				})
@@ -377,6 +384,37 @@
 					} catch(e) {}
 					$('[class*=select2]').remove();
 				});
+				
+			$('#id-input-file-3').ace_file_input({
+				style: 'well',
+				btn_choose: 'Drop files here or click to choose',
+				btn_change: null,
+				no_icon: 'ace-icon fa fa-cloud-upload',
+				droppable: true,
+				thumbnail: 'small'//large | fit
+				//,icon_remove:null//set null, to hide remove/reset button
+				/**,before_change:function(files, dropped) {
+					//Check an example below
+					//or examples/file-upload.html
+					return true;
+				}*/
+				/**,before_remove : function() {
+					return true;
+				}*/
+				,
+				preview_error : function(filename, error_code) {
+					//name of the file that failed
+					//error_code values
+					//1 = 'FILE_LOAD_FAILED',
+					//2 = 'IMAGE_LOAD_FAILED',
+					//3 = 'THUMBNAIL_FAILED'
+					//alert(error_code);
+				}
+
+			}).on('change', function(){
+				//console.log($(this).data('ace_input_files'));
+				//console.log($(this).data('ace_input_method'));
+			});
 		})			
 		</script>
 	</body>

@@ -19,7 +19,7 @@ class UsersController extends Controller
     public function index()
     {
         $allUsers = $this->users->getAll();
-        return view('admin.users', compact('allUsers'));
+        return view('admin.user.users', compact('allUsers'));
     }
 
     public function postAdd(Request $request)
@@ -39,7 +39,8 @@ class UsersController extends Controller
             $request->fullname,
             $request->birthday,
             $request->email,
-            $request->account_type
+            $request->account_type,
+            $request->gender
         ];
 
         $this->users->addUser($data);
@@ -61,7 +62,7 @@ class UsersController extends Controller
             return redirect()->route('users.index')->with('msg', 'Liên kết không tồn tại');
         }
         // dd($detail);
-        return view('admin.profile', compact('userDetail'));
+        return view('admin.user.profile', compact('userDetail'));
     }
 
     public function delete($id = 0)
@@ -78,7 +79,6 @@ class UsersController extends Controller
         }
         // dd($detail);
         return redirect()->route('admin.users.manage-user')->with('msg-success', 'Xoá người dùng thành công');
-        ;
     }
 
     public function postProfile(Request $request)
@@ -111,6 +111,7 @@ class UsersController extends Controller
                 $request->email,
                 $request->birthday,
                 $image,
+                $request->gender,
                 date('Y-m-d H:i:s', time())
             ];
 

@@ -22,12 +22,13 @@
 @endif
 <hr>
 <table class="table">
-    <thead class="thead-dark">
+    <thead class="">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Full Name</th>
         <th scope="col">Type</th>
         <th scope="col">Email</th>
+        <th scope="col">Gender</th>
         <th scope="col">Birthday</th>
         <th scope="col">Action</th>
         <th scope="col">Profile</th>
@@ -40,6 +41,15 @@
         <td>{{ $item->FULLNAME }}</td>
         <td>{{ $item->ACCOUNT_TYPE }}</td>
         <td>{{ $item->EMAIL }}</td>
+        <td>
+          @if ($item->GENDER === 0)
+            Male
+          @elseif($item->GENDER === 1)
+            Female
+          @elseif($item->GENDER === 2)
+              Other
+          @endif
+        </td>
         <td>{{ $item->BIRTHDAY }}</td>
         <td>
             <a href="{{ route('admin.users.delete', ['id'=>$item->USER_ID]) }}" class="glyphicon glyphicon-trash fa-2x"></a>
@@ -48,5 +58,5 @@
       </tr>
       @endforeach
     </tbody>
-  </table>
+</table>
 @endsection   

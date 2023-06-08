@@ -12,7 +12,11 @@ class Users extends Model
     protected $table = 'users';
 
     public function addUser($data) {
-        DB::insert('INSERT INTO '.$this->table.' (username, password, fullname, birthday, email, account_type) VALUES(?, ?, ?, ?, ?, ?)', $data);
+        DB::insert('INSERT INTO '.$this->table.' (username, password, fullname, birthday, email, account_type, gender) VALUES(?, ?, ?, ?, ?, ?, ?)', $data);
+    }
+
+    public function registerUser($data) {
+        DB::insert('INSERT INTO '.$this->table.' (username, password, email) VALUES(?, ?, ?)', $data);
     }
 
     public function getAll() {
@@ -31,6 +35,10 @@ class Users extends Model
 
     public function updateUser($data, $id) {
         $data[] = $id;
-        return DB::update('UPDATE '.$this->table.' SET fullname = ?, email = ?, birthday = ?, user_avatar = ?, update_at = ? WHERE USER_ID = ?', $data);
+        return DB::update('UPDATE '.$this->table.' SET fullname = ?, email = ?, birthday = ?, user_avatar = ?, gender = ?, update_at = ? WHERE USER_ID = ?', $data);
+    }
+
+    public function authUser($username, $password) {
+        return DB::select('SELECT * FROM '.$this->table.' WHERE USERNAME = ? AND PASSWORD = ?', [$username, $password]);
     }
 }

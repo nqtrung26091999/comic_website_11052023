@@ -1,5 +1,5 @@
 @extends('admin.index')
-@section('profile')
+@section('form')
 <div>
     <div id="user-profile-1" class="user-profile row">
         
@@ -42,9 +42,27 @@
             
                     <div class="col-sm-9">
                         <div class="input-group">
-                            <input class="col-xs-10 col-sm-10 date-picker" id="id-date-picker-1" type="datetime" data-date-format="yyyy-mm-dd" placeholder="Birthday" name="birthday" value="{{ $userDetail->BIRTHDAY }}"/>
+                            <input class="date-picker" id="id-date-picker-1" type="datetime" data-date-format="yyyy-mm-dd" placeholder="Birthday" name="birthday" value="{{ $userDetail->BIRTHDAY }}"/>
                         </div>
                     </div> 
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Gender </label>
+            
+                    <div class="col-sm-9">
+                        <select name="gender" id="" class="col-xs-10 col-sm-2">
+                            <option value="0" @if ($userDetail->GENDER === 0)
+                                selected
+                            @endif>Male</option>
+                            <option value="1" @if ($userDetail->GENDER === 1)
+                                selected
+                            @endif>Female</option>
+                            <option value="2" @if ($userDetail->GENDER === 2)
+                                selected
+                            @endif>Other</option>
+                        </select>
+                    </div>
                 </div>
             
                 <div class="form-group">

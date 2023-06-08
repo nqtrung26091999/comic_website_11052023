@@ -77,9 +77,21 @@
         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Type account </label>
 
         <div class="col-sm-9">
-            <select name="account_type" id="">
+            <select name="account_type" id="" class="col-xs-10 col-sm-1">
                 <option value="USER">User</option>
                 <option value="ADMIN">Admin</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Gender </label>
+
+        <div class="col-sm-9">
+            <select name="gender" id="" class="col-xs-10 col-sm-1">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+                <option value="2">Other</option>
             </select>
         </div>
     </div>
